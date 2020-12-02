@@ -30,9 +30,14 @@ export class TodoService {
     return this.http.delete<Todo>(url, httpOptions)
   }
 
+  // Add Todo Item
+  addTodo(todo:Todo):Observable<Todo> {
+    return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
+  }
+
   // Toggle Completed
   toggleCompleted(todo: Todo):Observable<any> {
     const url = `${this.todosUrl}/${todo.id}`
     return this.http.put(url, todo, httpOptions)
-  }
+  } 
 }
